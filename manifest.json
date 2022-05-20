@@ -1,8 +1,16 @@
 {
-  "name": "Hello, World!",
+  "name": "Workbench-Demo-Extension",
   "version": "1.0",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
+  },
+  "action": {
+      "default_popup": "display.html",
+      "default_icon": {
+          "16": "/images/logo16.png",
+          "24": "/images/logo24.png",
+          "32": "/images/logo24.png"
+      }
   }
 }

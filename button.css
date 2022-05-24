@@ -1,4 +1,4 @@
-button {
+/*.button {
     background-color: #6699ff;
     border: none;
     color: white;
@@ -11,6 +11,86 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     background-color:#99bbff;
+}*/
+
+@font-face {
+    font-family: tenon-regular;
+    src: url(tenon-regular-2.otf);
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+.button {
+	pointer-events: auto;
+	cursor: pointer;
+	background: #e7e7e7;
+	border: none;
+	padding: 1.5rem 3rem;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	position: relative;
+	display: inline-block;
+}
+
+.button::before,
+.button::after {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.button-main {
+	background: none;
+    
+	padding: 1rem 1.5rem;
+}
+
+.button-main span {
+	display: inline-block;
+	position: relative;
+    font-family: inherit;
+    font-size: .8rem;
+    font-weight: bolder;
+	color: black;
+}
+
+.button-main::before {
+	content: '';
+    background: #FCB316;
+	transition: transform 0.3s cubic-bezier(0.2,1,0.7,1);
+}
+
+.button-main:hover::before {
+	transform: scale3d(0.9, 0.8, 1);
+}
+
+.button-main::after {
+	content: '';
+	border: 1.5px solid #FCB316;
+	transition: transform 0.3s cubic-bezier(0.2,1,0.7,1);
+	border-radius: 0px;
+	transform: scale3d(0.85, 0.65, 1);
+}
+
+.button-main:hover::after {
+	transform: scale3d(1,1,1);
+    border: 1px solid black;
+}
+
+.header-content {
+    color: black;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bolder;
+    overflow: hidden;
+    white-space: nowrap;
 }

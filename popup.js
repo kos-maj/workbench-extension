@@ -1,4 +1,4 @@
-let btn = document.getElementById("mainBtn");
+let btn = document.getElementById("button-main");
 
 btn.addEventListener("click", async () => {
     const url = "https://youtube.com/";

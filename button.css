@@ -62,7 +62,7 @@
 .button-main span {
 	display: inline-block;
 	position: relative;
-    font-family: tenon-regular;
+    font-family: tenon-regular, sans-serif;
     font-size: .8rem;
     font-weight: bolder;
 	color: black;
@@ -93,7 +93,7 @@
 
 .header-content {
     color: black;
-    font-family: tenon-bold;
+    font-family: tenon-bold, sans-serif;
     font-size: 1.1rem;
     overflow: hidden;
     white-space: nowrap;

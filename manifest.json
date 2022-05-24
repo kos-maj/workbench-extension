@@ -24,6 +24,6 @@
       "tabs", "scripting"
   ],
   "host_permissions": [
-      "http://*.com/*", "https://*.com/*"
+      "*://*/*"
   ]
 }

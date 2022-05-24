@@ -17,7 +17,12 @@
 
 @font-face {
     font-family: tenon-regular;
-    src: url(tenon-regular-2.otf);
+    src: url(fonts/tenon-regular-2.otf) format("opentype");
+}
+
+@font-face {
+    font-family: tenon-bold;
+    src: url(fonts/tenon-xbold-2.otf) format("opentype");
 }
 
 *,
@@ -57,7 +62,7 @@
 .button-main span {
 	display: inline-block;
 	position: relative;
-    font-family: inherit;
+    font-family: tenon-regular;
     font-size: .8rem;
     font-weight: bolder;
 	color: black;
@@ -88,9 +93,8 @@
 
 .header-content {
     color: black;
-    font-family: inherit;
-    font-size: 1rem;
-    font-weight: bolder;
+    font-family: tenon-bold;
+    font-size: 1.1rem;
     overflow: hidden;
     white-space: nowrap;
 }

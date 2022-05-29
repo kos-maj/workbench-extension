@@ -1,39 +1,32 @@
 
 console.log("[+] service running...");
+let g_url;
+let g_pressed = false;
 
-const injectedScript = url => {
+const injectedScript = function (prev_url) {
     if (window.location.href.includes('youtube.com')) {
-        document.querySelector('input').value = url;
+        document.querySelector('input').setAttribute('value', prev_url);
+
         // TO DO: click button after tab loads? 
         // const btn = document.getElementById('button');
     }
-}
+};
 
-chrome.runtime.onMessage.addListener(async (previousURL) => {
-    const url   = 'https://youtube.com';
-    let tab = await chrome.tabs.create({ url });
+chrome.runtime.onMessage.addListener((previousURL) => {
+    g_url     = previousURL;
+    g_pressed = true;
+    const url = 'https://youtube.com';
 
-    if(typeof tab  !== 'undefined') {
-        console.log(`[+] Injecting script into tabid = '${tab.id}'\nprev_url = '${previousURL}`);
+    chrome.tabs.create({ url });
+});
+
+chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    if(tab.status === 'complete' && g_pressed) {
+        g_pressed = false;
         chrome.scripting.executeScript({
-            target: { tabId: tab.id },
+            target: {tabId: tab.id},
             function: injectedScript,
-            args: [previousURL]
+            args: [g_url]
         });
-    } else {
-        console.log("Error: could not create new tab - chrome.tabs.create() returned undefined.");
     }
-    // createNewTab(url).then(tab => {
-        // if(typeof tab !== 'undefined') {
-            // console.log(`[+] Injecting script into tabid = '${tab.id}'\nexurl = ${previousURL}...`);
-            // chrome.scripting.executeScript({
-                // target: { tabId: tab.id },
-                // function: injectedScript,
-                // args: [previousURL]
-            // })
-        // } else {
-            // console.log("Error: could not create new tab - chrome.tabs.create() returned undefined.");
-        // }
-    // })
-
-})
+});

@@ -13,6 +13,7 @@ const injectedScript = function (prev_url) {
 };
 
 chrome.runtime.onMessage.addListener((previousURL) => {
+    // Get url, set pressed to true, and create a new tab
     g_url     = previousURL;
     g_pressed = true;
     const url = 'https://youtube.com';
@@ -21,6 +22,7 @@ chrome.runtime.onMessage.addListener((previousURL) => {
 });
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo, tab) => {
+    // Only execute script if updated tab is a result of the extension button press
     if(tab.status === 'complete' && g_pressed) {
         g_pressed = false;
         chrome.scripting.executeScript({

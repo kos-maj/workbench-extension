@@ -8,37 +8,43 @@ const injectedScript = function (prev_url) {
     const loadNews  = document.querySelectorAll('button').item(0);
     const lucky     = document.querySelectorAll('button').item(1);
 
-    // Focus on input and clear field
+    // Focus on input and paste url
     userInput.select();
-    userInput.value = '';
-
-    // userInput.value = prev_url;
+    userInput.value = prev_url;
+    
     // loadNews.click();
-    
+
     // TODO: fix frontend not registering user input??
+    // userInput.dispatchEvent(new KeyboardEvent("keydown", {
+        // "key": "b"
+    // }));
+    // userInput.dispatchEvent(new KeyboardEvent("keyup", {
+        // "key": "b"
+    // }));
 
-    // ((((Testing))))
-    let current = 0;
-    let len = prev_url.length;
- 
-    const writeURL = () => {
-        if(current < len-1) {
-            userInput.value += prev_url[current];
-            current++;
-            setTimeout(() => {
-                writeURL();
-            }, 80);
-        } else {
-            
-            loadNews.click();
-        }
-    }
- 
-    writeURL();
-    // 
+    setTimeout(() => { loadNews.click(); }, 500);
 
+   
     
-    // TODO: wait for RUN NER button to appear, then press 
+    /** ((TESTING)) */
+    // let current = 0;
+    // let len = prev_url.length;
+
+    // const writeURL = () => {
+        // if(current < len-1) {
+            // userInput.value += prev_url[current];
+            // current++;
+            // setTimeout(() => {
+                // writeURL();
+            // }, 30);
+        // } else {
+            // setTimeout(() => { loadNews.click() }, 250);
+        // }
+    // }
+    // writeURL();
+    
+
+    // TODO: wait for RUN NER button to appear, then press it -- easy
 };
 
 chrome.runtime.onMessage.addListener((previousURL) => {

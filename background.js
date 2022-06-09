@@ -12,30 +12,30 @@ const injectedScript = function (prev_url) {
     userInput.select();
     userInput.value = '';
 
-    userInput.value = prev_url;
-    loadNews.click();
+    // userInput.value = prev_url;
+    // loadNews.click();
     
     // TODO: fix frontend not registering user input??
 
     // ((((Testing))))
-    // let current = 0;
-    // let len = url.length;
+    let current = 0;
+    let len = prev_url.length;
  
-    // const writeURL = () => {
-        // if(current < len-1) {
-            // userInput.value += url[current];
-            // current++;
-            // setTimeout(() => {
-                // writeURL();
-            // }, 80);
-        // } else {
-            // loadNews.click();
-            // setTimeout(() => {userInput.value += 'END';}, 1000);
-        // }
-    // }
+    const writeURL = () => {
+        if(current < len-1) {
+            userInput.value += prev_url[current];
+            current++;
+            setTimeout(() => {
+                writeURL();
+            }, 80);
+        } else {
+            
+            loadNews.click();
+        }
+    }
  
-    // writeURL();
-    
+    writeURL();
+    // 
 
     
     // TODO: wait for RUN NER button to appear, then press 

@@ -4,17 +4,14 @@ let g_url;
 let g_pressed = false;
 
 const injectedScript = function (prev_url) {
-    // const userInput = document.querySelector('input');
-    // const loadNews  = document.querySelectorAll('button').item(0);
-    // const lucky     = document.querySelectorAll('button').item(1);
-
     const userInput = document.querySelector('input');
-    const search = document.querySelectorAll('button').item(1);
+    const loadNews  = document.querySelectorAll('button').item(0);
+    const lucky     = document.querySelectorAll('button').item(1);
 
     // Focus on input and paste url
     userInput.select();
     userInput.value = prev_url;
-    search.click(); 
+    loadNews.click(); 
 
 
     /** ((TESTING)) */
@@ -42,8 +39,7 @@ chrome.runtime.onMessage.addListener((previousURL) => {
     // Get url, set pressed to true, and create a new tab
     g_url     = previousURL;
     g_pressed = true;
-    // const url = 'https://newskg.wdmuofa.ca/';
-    const url = 'https://images.google.ca';
+    const url = 'https://newskg.wdmuofa.ca/';
 
     chrome.tabs.create({ url });
 });
